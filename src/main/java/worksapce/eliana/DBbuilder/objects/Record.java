@@ -20,4 +20,23 @@ public class Record {
         //this.recordKey=recordKey;
         this.record=record;
     }
+
+    public String toStringCsv()
+    {
+        String ret="";
+        int len = this.record.size();
+        for(Object obj : this.record)
+        {
+            len--;
+            if(len==0)
+            {
+                ret+=obj.toString();
+            }
+            else
+            {
+                ret+=obj.toString()+",";
+            }
+        }
+        return ret;
+    }
 }
