@@ -11,12 +11,12 @@ import java.io.IOException;
 
 public class Inserter {
 
-    public void insertRecord(Record record, String tableName, String dbName) throws IOException {
+    public void insertRecord(String dbName, String tableName, Record record) throws IOException {
 
         String path = (new ConfigLoader().load().getProperty("allDBsPath"));
-        FileWriter writer = new FileWriter(path+"\\"+dbName+"\\"+tableName+".csv");
-        writer.write(record.toStringCsv());
+        FileWriter writer = new FileWriter(path+"\\"+dbName+"\\"+tableName+".csv",true);
         writer.write(System.lineSeparator());
+        writer.write(record.toStringCsv());
         writer.flush();
         writer.close();
     }
@@ -26,12 +26,12 @@ public class Inserter {
         String path = (new ConfigLoader().load().getProperty("allDBsPath"));
         Table table = new Table(tableName, cols);
         File file = new File(path+"\\"+dbName+"\\"+tableName+".csv");
-        FileWriter writer = new FileWriter(file);
 
-        for (Record record : table.getTable().values())
-        {
-                insertRecord(record,tableName,dbName);
-        }
+        FileWriter writer = new FileWriter(file);
+        Record record = new Record(cols);
+        writer.write(record.toStringCsv());
+        writer.flush();
+        writer.close();
     }
 
     public void insertExistingTable(String dbName, Table table) throws IOException {
@@ -41,7 +41,7 @@ public class Inserter {
 
         for (Record record : table.getTable().values())
         {
-            insertRecord(record,table.getTableName(),dbName);
+            insertRecord(dbName, table.getTableName(), record);
         }
     }
 
