@@ -23,4 +23,12 @@ public class Table {
 
         this.table.put(tableName,new Record(list));
     }
+
+    public String getTableName() {
+        return tableName;
+    }
+
+    public Map<Object, Record> getTable() {
+        return table;
+    }
 }

@@ -17,4 +17,12 @@ public class DataBase {
         this.name=name;
         this.dataBase=dataBase;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Map<String, Table> getDataBase() {
+        return dataBase;
+    }
 }
