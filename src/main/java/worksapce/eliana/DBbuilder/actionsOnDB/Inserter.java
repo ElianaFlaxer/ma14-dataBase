@@ -46,6 +46,7 @@ public class Inserter {
         {
             insertRecord(dbName, table.getTableName(), record);
         }
+
     }
 
     public void insertNewDB(String dbName) throws IOException {

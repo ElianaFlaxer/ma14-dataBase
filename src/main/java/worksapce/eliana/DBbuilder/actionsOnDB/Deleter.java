@@ -1,15 +1,11 @@
 package worksapce.eliana.DBbuilder.actionsOnDB;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
 import worksapce.eliana.DBbuilder.ConfigLoader;
-import worksapce.eliana.DBbuilder.objects.Record;
 import worksapce.eliana.DBbuilder.objects.Table;
+import worksapce.eliana.DBbuilder.reader.CsvReader;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.Map;
 
 public class Deleter {
 

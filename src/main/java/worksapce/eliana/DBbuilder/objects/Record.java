@@ -29,6 +29,10 @@ public class Record {
                 '}';
     }
 
+    public List<Object> getRecord() {
+        return this.record;
+    }
+
     public String toStringCsv()
     {
         String ret="";

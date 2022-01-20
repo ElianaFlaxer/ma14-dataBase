@@ -21,8 +21,6 @@ public class Table {
         {
             this.cols.add(col);
         }
-
-        //this.table.put(tableName,new Record(list));
     }
 
     public Table(String tableName, Map<Object,Record> table, List<String> cols)
@@ -32,9 +30,28 @@ public class Table {
         this.cols=cols;
     }
 
-    public void removeRecord(Object objectKey)
+    public void removeRecord(Object objKey)
     {
-        this.table.remove(objectKey);
+        this.table.remove(objKey);
+    }
+
+    public int getColIdx(String col)
+    {
+        for(int i =0; i<this.cols.size();i++)
+        {
+            if(col.equals(this.cols.get(i)))
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void updateRecord(Object objkey, Object val, String col)
+    {
+        Record rec = this.table.get(objkey);
+        List<Object> list = rec.getRecord();
+        list.set(this.getColIdx(col),val);
     }
 
     public String getTableName() {

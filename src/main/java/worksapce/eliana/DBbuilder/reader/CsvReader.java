@@ -1,9 +1,8 @@
-package worksapce.eliana.DBbuilder.actionsOnDB;
+package worksapce.eliana.DBbuilder.reader;
 
 import worksapce.eliana.DBbuilder.objects.Record;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,12 +19,12 @@ public class CsvReader<T> {
         this.fileName=fileName;
     }
 
-    public List<String> readCols() throws FileNotFoundException {
+    public List<String> readCols() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(this.fileName));
         List<String> cols = new ArrayList<>();
-        String line="";
         String splitBy = ",";
 
+        String line = br.readLine();
         String[] all = line.split(splitBy);
         for(int i=0; i<all.length ;i++)
         {
@@ -40,7 +39,8 @@ public class CsvReader<T> {
         Map<Object,Record> records = new HashMap<>();
         String line;
         String splitBy = ",";
-        int j=0;
+
+        line = br.readLine();
 
         while ((line = br.readLine()) != null)
         {

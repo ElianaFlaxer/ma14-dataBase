@@ -2,6 +2,7 @@ package worksapce.eliana.DBbuilder;
 
 import worksapce.eliana.DBbuilder.actionsOnDB.Deleter;
 import worksapce.eliana.DBbuilder.actionsOnDB.Inserter;
+import worksapce.eliana.DBbuilder.actionsOnDB.Updater;
 import worksapce.eliana.DBbuilder.objects.Record;
 
 import java.io.IOException;
@@ -13,6 +14,7 @@ public class Main {
 
         Inserter inserter = new Inserter();
         Deleter deleter = new Deleter();
+        Updater updater = new Updater();
 
         inserter.insertNewDB("TV");
         inserter.insertNewTable("TV","Movies", "id",
@@ -34,6 +36,7 @@ public class Main {
         deleter.deleteTable("cats","mizi");
 
         deleter.deleteRecord("TV", "Movies", "2");
-    }
 
+        updater.updateRecord("TV", "Movies", "1",30,"actorsNo");
+    }
 }
