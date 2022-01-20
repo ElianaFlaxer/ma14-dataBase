@@ -1,4 +1,4 @@
-package worksapce.eliana.DBbuilder.actions;
+package worksapce.eliana.DBbuilder.actionsOnDB;
 
 import worksapce.eliana.DBbuilder.objects.Record;
 

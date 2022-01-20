@@ -1,4 +1,4 @@
-package worksapce.eliana.DBbuilder.actions;
+package worksapce.eliana.DBbuilder.actionsOnDB;
 
 import worksapce.eliana.DBbuilder.ConfigLoader;
 import worksapce.eliana.DBbuilder.objects.DataBase;
@@ -26,10 +26,9 @@ public class Inserter {
         String path = (new ConfigLoader().load().getProperty("allDBsPath"));
         Table table = new Table(tableName, cols);
         File file = new File(path+"\\"+dbName+"\\"+tableName+".csv");
-
         FileWriter writer = new FileWriter(file);
-        Record record = new Record(cols);
-        writer.write(record.toStringCsv());
+
+        writer.write(table.colsToCsv());
         writer.flush();
         writer.close();
     }
@@ -38,6 +37,10 @@ public class Inserter {
 
         String path = (new ConfigLoader().load().getProperty("allDBsPath"));
         FileWriter writer = new FileWriter(path+"\\"+dbName+"\\"+table.getTableName()+".csv");
+
+        writer.write(table.colsToCsv());
+        writer.flush();
+        writer.close();
 
         for (Record record : table.getTable().values())
         {

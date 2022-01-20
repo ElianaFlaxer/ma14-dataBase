@@ -22,6 +22,13 @@ public class Record {
         this.record = new ArrayList<Object>(List.of(objects));
     }
 
+    @Override
+    public String toString() {
+        return "Record{" +
+                "record=" + record +
+                '}';
+    }
+
     public String toStringCsv()
     {
         String ret="";
